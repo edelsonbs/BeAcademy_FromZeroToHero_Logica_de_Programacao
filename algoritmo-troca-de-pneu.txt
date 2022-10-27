@@ -1,0 +1,25 @@
+Algoritmo: Trocar_Pneu
+
+Procure um lugar seguro
+Pegar o sinalizador (triãngulo)
+Pegar o macaco
+Pegar a chave de roda
+Pegar o step
+Colocar o sinalizador atrás do veículo na distânca correta
+Afrouxar os parafusos da roda
+Suspender o carro com o macaco
+Continuar desparafusando a roda
+Retirar os parafusos
+Retirar o pneu furado
+Pegar o step
+Verificar se o step está cheio
+    Se sim, ir para a troca
+    Senão encher o step
+Colocar o step no lugar do pneu furado
+Colocar os parafusos no lugar e começar a apertar
+Descer o carro
+Retirar o macaco
+Terminarde apertar os parafusos
+Guardar o pneu furado
+Guardar as ferramentas
+Continuar sua rota
