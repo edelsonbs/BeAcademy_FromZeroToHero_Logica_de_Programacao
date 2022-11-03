@@ -1,17 +1,19 @@
 Algoritmo "Exercício_Forma_Geométrica"
 // Disciplina   : Lógica de Programação
-// Professor   : Marcos Monteiro 
+// Professor   : Marcos Monteiro
 // Descrição   : Programa que calcula a área e o perímetro do quadardo e do triângulo
 // Autor(a)    : Edelson Barboza
 // Data atual  : 30/10/2022
 Var
-// Seção de Declarações das variáveis 
-opcao: caractere
-lado_quadrado, per_quadrado, area_quadrado: inteiro
-base_triangulo, altura_triangulo, lado_triangulo, per_triangulo: inteiro
-area_triangulo: real
+   // Seção de Declarações das variáveis
+   opcao, figura: caractere
+   lado_quadrado, perimetro, area: real
+   lado_ab, lado_bc, lado_ac, metade_per: real
 
 Inicio
+   escreval("# Programa que calcula a área e o perímetro de uma figura #")
+   escreval()
+   escreval()
    escreval("* *  FIGURA GEOMÉTRICA  * *")
    escreval("*                         *")
    escreval("*  [Q] - Quadrado         *")
@@ -19,40 +21,49 @@ Inicio
    escreval("*                         *")
    escreval("* * * * * * * * * * * * * *")
    escreval()
-   escreval("Escolha a figura geométrica que deseja calcular a área e o perímetro")
-   escreva("Digite Q ou T: ")
+   escreva("Escolha a figura geométrica. Digite Q ou T: ")
    leia(opcao)
+   opcao := minusc(opcao) e maiusc(opcao)
    escreval()
    escolha opcao
-     caso "Q"
-        escreva("Digite a medida do lado do quadrado: ")
-        leia(lado_quadrado)
-        area_quadrado := lado_quadrado * lado_quadrado
-        per_quadrado := lado_quadrado * 4
-     caso "T"
-        escreva("Digite a medida da base do triângulo: ")
-        leia(base_triangulo)
-        escreva("Digite a medida da altura do triângulo: ")
-        leia(altura_triangulo)
-        escreva("Digite a medida do outro lado do triângulo: ")
-        leia(lado_triangulo)
-        area_triangulo := (base_triangulo * altura_triangulo)/2
-        per_triangulo := base_triangulo + altura_triangulo + lado_triangulo
-     outrocaso
-        escreval("[ERRO] Opção Inválida!")
+   caso "q"
+      escreva("Digite a medida do lado do quadrado: ")
+      leia(lado_quadrado)
+      // Fórmula para calcular o perímetro do quadrado
+      perimetro := lado_quadrado * 4
+      // Fórmula para calcular a área do quadrado
+      area := lado_quadrado * lado_quadrado
+      figura := "Quadrado"
+   caso "t"
+      escreva("Digite a medida do lado AB do triângulo: ")
+      leia(lado_ab)
+      escreva("Digite a medida do lado BC do triângulo: ")
+      leia(lado_bc)
+      escreva("Digite a medida do lado AC do triângulo: ")
+      leia(lado_ac)
+      se (lado_ab + lado_bc > lado_ac) entao
+         se (lado_bc + lado_ac > lado_ab) entao
+            se (lado_ac + lado_ab > lado_bc) entao
+               // Fórmula para calcular o perímetro do triângulo
+               perimetro := lado_ab + lado_bc + lado_ac
+               // Fórmula de Heron para calcular a área do triângulo
+               metade_per := perimetro/2
+               area := raizq(metade_per*(metade_per - lado_ab)*(metade_per - lado_bc)*(metade_per - lado_ac))
+               figura := "Triângulo"
+            senao
+               escreval("Triângulo Inválido!")
+            fimse
+         fimse
+      fimse
+   outrocaso
+      escreval("[ERRO] Opção Inválida!")
    fimescolha
    // Imprimindo o resultado
    escreval()
-   escreval("==========================================================")
-   se (opcao="Q") entao
-      escreval("Figura: Quadrado")
-      escreval("Área:", area_quadrado)
-      escreval("Perímetro:", per_quadrado)
-   senao
-      se (opcao="T") entao
-         escreval("Figura: Triângulo")
-         escreval("Área:", area_triangulo)
-         escreval("Perímetro:", per_triangulo)
-      fimse
-   fimse
+   escreval("=============================================")
+   escreval()
+   escreval("Figura: ",figura)
+   escreval("Área:", area)
+   escreval("Perímetro:", perimetro)
+
 Fimalgoritmo
